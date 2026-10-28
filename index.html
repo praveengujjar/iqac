@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BIMA Faculty Accomplishment Details</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --gibs-red: #A31D24;
+      --gibs-dark-red: #7A1217;
+      --gibs-black: #111111;
+      --gibs-grey: #222222;
+      --gibs-light-bg: #F8F9FA;
+    }
+
+    body {
+      background-color: #F3F4F6;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+    }
+
+    /* Header Styling */
+    .gibs-header {
+      background: linear-gradient(135deg, var(--gibs-black) 0%, var(--gibs-grey) 100%);
+      color: white;
+      border-bottom: 4px solid var(--gibs-red);
+      padding: 20px 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .logo-img {
+      width: 75px;
+      height: 75px;
+      object-fit: contain;
+      background: white;
+      border-radius: 50%;
+      padding: 4px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    }
+
+    .institute-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      margin: 0;
+      color: #FFFFFF;
+      text-transform: uppercase;
+    }
+
+    .institute-sub {
+      color: #E0E0E0;
+      font-size: 0.95rem;
+      margin: 2px 0 0 0;
+      font-weight: 500;
+    }
+
+    .tagline {
+      color: #FF5252;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-top: 4px;
+    }
+
+    /* Card Styling */
+    .card-custom {
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+      background: #FFFFFF;
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+
+    .card-header-gibs {
+      background: var(--gibs-red);
+      color: white;
+      padding: 16px 24px;
+      font-weight: 700;
+      font-size: 1.15rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .form-section-title {
+      color: var(--gibs-dark-red);
+      font-weight: 700;
+      font-size: 1rem;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #F0F0F0;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-gibs {
+      background-color: var(--gibs-red);
+      color: white;
+      font-weight: 600;
+      padding: 12px 30px;
+      border-radius: 8px;
+      border: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(163, 29, 36, 0.3);
+    }
+
+    .btn-gibs:hover {
+      background-color: var(--gibs-dark-red);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(163, 29, 36, 0.4);
+    }
+
+    .form-control:focus, .form-select:focus {
+      border-color: var(--gibs-red);
+      box-shadow: 0 0 0 0.25rem rgba(163, 29, 36, 0.15);
+    }
+
+    .file-note {
+      font-size: 0.85rem;
+      color: #6C757D;
+      background-color: #FFF8F8;
+      border-left: 3px solid var(--gibs-red);
+      padding: 8px 12px;
+      border-radius: 0 4px 4px 0;
+      margin-top: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="gibs-header">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="logo-container">
+        <img src="images.png" alt="Bangalore Integrated Management Academy Logo" class="logo-img">
+        <div>
+          <h1 class="institute-title">Bangalore Integrated Management Academy</h1>
+          <p class="institute-sub">Bangalore, India</p>
+          <div class="tagline">EMPOWERING YOUNG MINDS</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+
+        <!-- Entry Form Card -->
+        <div class="card card-custom">
+          <div class="card-header-gibs">
+            <span><i class="fas fa-award me-2"></i> Faculty Accomplishment Submission Portal</span>
+            <span class="badge bg-light text-dark fw-normal" style="font-size: 0.8rem;">IQAC Internal System</span>
+          </div>
+          <div class="card-body p-4 p-md-5">
+
+            <form id="accomplishmentForm">
+
+              <!-- Section 1: Basic Information -->
+              <div class="form-section-title">
+                <i class="fas fa-user-circle"></i> 1. Faculty Details & Period Context
+              </div>
+
+              <div class="row g-3 mb-4">
+                <div class="col-md-6">
+                  <label class="form-label fw-semibold">Faculty Name <span class="text-danger">*</span></label>
+                  <input type="text" name="Faculty Name" id="facultyName" class="form-control" placeholder="Dr. / Prof. Full Name" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label fw-semibold">Faculty Email / Employee ID <span class="text-danger">*</span></label>
+                  <input type="email" name="Faculty Email" id="facultyEmail" class="form-control" placeholder="faculty@bima.edu.in" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label fw-semibold">Department / Program <span class="text-danger">*</span></label>
+                  <select name="Department" id="department" class="form-select" required>
+                    <option value="">-- Select Department --</option>
+                    <option value="MBA Department">MBA Department</option>
+                    <option value="PGDM Department">PGDM Department</option>
+                    <option value="BBA Department">BBA Department</option>
+                    <option value="Research & Development Cell">Research & Development Cell</option>
+                    <option value="Executive Education">Executive Education</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label fw-semibold">Accomplishment Phase / Tenure <span class="text-danger">*</span></label>
+                  <select name="Tenure Phase" id="tenurePhase" class="form-select" onchange="updateCategories()" required>
+                    <option value="After Joining BIMA">After Joining BIMA</option>
+                    <option value="Before Joining BIMA">Before Joining BIMA (Prior Career Record)</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Section 2: Accomplishment Type -->
+              <div class="form-section-title">
+                <i class="fas fa-list-check"></i> 2. Select Accomplishment Category
+              </div>
+
+              <div class="row g-3 mb-4">
+                <div class="col-md-12">
+                  <label class="form-label fw-semibold">Criteria / Category <span class="text-danger">*</span></label>
+                  <select name="Criteria Category" id="criteriaCategory" class="form-select" onchange="renderDynamicFields()" required>
+                    <!-- Options populated dynamically -->
+                  </select>
+                </div>
+              </div>
+
+              <!-- Section 3: Dynamic Accomplishment Fields -->
+              <div class="form-section-title">
+                <i class="fas fa-file-signature"></i> 3. Accomplishment Specifics & Details
+              </div>
+
+              <div class="row g-3 mb-4" id="dynamicFieldsContainer">
+                <!-- Dynamic input fields render here -->
+              </div>
+
+              <!-- Section 4: Document Proof Upload -->
+              <div class="form-section-title">
+                <i class="fas fa-paperclip"></i> 4. Proof / Supporting Document Upload
+              </div>
+
+              <div class="row g-3 mb-4">
+                <div class="col-md-12">
+                  <label class="form-label fw-semibold">Upload Supporting Certificate / Paper / Proof (PDF only) <span class="text-danger">*</span></label>
+                  <input type="file" name="Attachment PDF" id="documentProof" class="form-control" accept=".pdf" required>
+                  <div class="file-note">
+                    <i class="fas fa-info-circle me-1"></i> Note: All supporting documents must be submitted in clear <strong>PDF format</strong> only.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Status Alert Box -->
+              <div id="responseAlert" class="alert d-none mb-3" role="alert"></div>
+
+              <!-- Submit Button -->
+              <div class="text-end pt-3">
+                <button type="submit" id="submitBtn" class="btn btn-gibs btn-lg">
+                  <i class="fas fa-paper-plane me-2"></i> Submit Accomplishment Details
+                </button>
+              </div>
+
+            </form>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // PASTE YOUR DEPLOYED GOOGLE APPS SCRIPT WEB APP URL HERE
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzxpZDeeHOt000H8-H7k2BEZ78Y-F2ExG4DM5wf0HZxz7_E8V95QAiwtAiHhCeenabHUQ/exec";
+
+    const categoriesAfter = [
+      "Additional Achievement (Certificate of Appreciation & Participation)",
+      "Awards and Recognition (Government / Non-Government / Best Paper / Best Professor)",
+      "Board of Examiner Role",
+      "Board of Studies Membership",
+      "Book Authored / Book Chapter / Chapter Review",
+      "Conference Proceedings Publication",
+      "Research Paper Review Conducted by Faculty",
+      "Case Study Authored by Faculty",
+      "Conclave Attended Outside BIMA",
+      "Conference / Seminar Attended (Participant)",
+      "Copyright Filed / Granted",
+      "Collaboration Project / Research Link",
+      "Design of New Curriculum & Courses for MOOCs",
+      "E-Content Developed by Faculty",
+      "Editorial Board Member",
+      "Faculty Consultancy Undertaken",
+      "FDP Attended (BIMA / Outside)",
+      "FDP Conducted Outside by Faculty",
+      "Guest Lecture Conducted Outside",
+      "Lesson Plan Submission",
+      "Major / Minor Projects Undertaken",
+      "MDP Attended / Conducted",
+      "Professional Membership",
+      "Panel Discussion Attended",
+      "Panel Discussion Conducted / Moderated",
+      "Panel Member of PhD Review / Colloquium / Viva",
+      "Paper Presented in Conferences / Seminars",
+      "Patents Filed / Published / Granted",
+      "Ph.D / M.Phil Guidance Provided",
+      "Policy Documents Submitted (UNO / World Bank / Govt)",
+      "Faculty Promotion Qualification Update",
+      "Research Paper Published in Journal",
+      "Invitation as Resource Person / Session Chair / Moderator",
+      "Certification Courses Completed (Swayam / Coursera / NPTEL / LinkedIn)",
+      "Upgradation of Qualification (Higher Degree)",
+      "Webinar Attended",
+      "Webinar Conducted",
+      "Workshop Attended",
+      "Workshop Conducted",
+      "Media Engagement / Press Release"
+    ];
+
+    const categoriesBefore = [
+      "Faculty Personal Information & Qualifications",
+      "Photocopies of Marks Cards (SSLC to Highest Degree)",
+      "Curriculum Vitae (CV)",
+      "Offer / Appointment Letters (Previous Institutions)",
+      "Experience / Relieving Letters",
+      "Awards and Recognition (Prior Career)",
+      "Prior Books / Chapters Authored",
+      "Prior Research Publications",
+      "Prior FDP / Workshop Certifications"
+    ];
+
+    function updateCategories() {
+      const phase = document.getElementById('tenurePhase').value;
+      const select = document.getElementById('criteriaCategory');
+      select.innerHTML = '<option value="">-- Select Category --</option>';
+
+      const list = (phase === "Before Joining BIMA") ? categoriesBefore : categoriesAfter;
+      list.forEach(cat => {
+        const opt = document.createElement('option');
+        opt.value = cat;
+        opt.textContent = cat;
+        select.appendChild(opt);
+      });
+
+      renderDynamicFields();
+    }
+
+    function renderDynamicFields() {
+      const cat = document.getElementById('criteriaCategory').value;
+      const container = document.getElementById('dynamicFieldsContainer');
+      container.innerHTML = '';
+
+      if (!cat) return;
+
+      // Adaptive field labels based on chosen category context
+      let titleLabel = "Accomplishment / Activity Title";
+      let titlePlaceholder = "Enter title or heading";
+
+      let publisherLabel = "Issuing Body / Publisher / Organization";
+      let publisherPlaceholder = "Organization / Publisher / Institution name";
+
+      let dateLabel = "Date of Event / Achievement / Publication";
+      
+      let refLabel = "Ref No. / Certificate ID / Details";
+      let refPlaceholder = "Certificate No., Scopus status, duration, location, etc.";
+
+      if (cat.includes("Paper") || cat.includes("Book") || cat.includes("Journal") || cat.includes("Case Study") || cat.includes("Patent") || cat.includes("Copyright")) {
+        titleLabel = "Title of Paper / Book / Patent / Copyright";
+        titlePlaceholder = "Enter complete publication or patent title";
+        publisherLabel = "Journal / Publisher / Patent Office";
+        publisherPlaceholder = "Publisher name, ISSN/ISBN, or Patent Office";
+        dateLabel = "Date of Publication / Filing / Award";
+        refLabel = "Indexing Status / Registration / Patent ID";
+        refPlaceholder = "e.g., Scopus Indexed, Web of Science, Patent No.";
+      } else if (cat.includes("FDP") || cat.includes("Workshop") || cat.includes("Conference") || cat.includes("Webinar") || cat.includes("Course") || cat.includes("Conclave") || cat.includes("Seminar") || cat.includes("MDP")) {
+        titleLabel = "Event / Program / Course Title";
+        titlePlaceholder = "Enter program title";
+        publisherLabel = "Organizing Body / Institution / Platform";
+        publisherPlaceholder = "e.g., IIM Bangalore, NPTEL, Coursera, BIMA";
+        dateLabel = "Event Date / Completion Date";
+        refLabel = "Duration / Mode / Location";
+        refPlaceholder = "e.g., 5 Days, Online / Offline, Bangalore";
+      } else if (cat.includes("Award") || cat.includes("Recognition") || cat.includes("Achievement")) {
+        titleLabel = "Award / Recognition Title";
+        titlePlaceholder = "e.g., Best Paper Award, Best Professor, Appreciation";
+        publisherLabel = "Awarding Agency / Government / Institution";
+        publisherPlaceholder = "Name of organization bestowing the award";
+        dateLabel = "Date Received";
+        refLabel = "Certificate / Reference Number";
+        refPlaceholder = "Award Ref No. / Certificate ID";
+      } else if (cat.includes("Qualification") || cat.includes("Marks Cards") || cat.includes("CV") || cat.includes("Letter") || cat.includes("Personal")) {
+        titleLabel = "Document Name / Degree Title";
+        titlePlaceholder = "e.g., Ph.D Degree Certificate, Relieving Letter, CV";
+        publisherLabel = "University / Previous Institution";
+        publisherPlaceholder = "Name of University or Institution";
+        dateLabel = "Issue Date / Year of Completion";
+        refLabel = "Reg No. / Roll No. / Employee ID";
+        refPlaceholder = "Registration No. / Employee ID";
+      } else if (cat.includes("Consultancy") || cat.includes("Project") || cat.includes("Collaboration") || cat.includes("Guidance")) {
+        titleLabel = "Project / Consultancy / Topic Title";
+        titlePlaceholder = "Enter full title or subject";
+        publisherLabel = "Sponsoring / Client Organization / Scholar Name";
+        publisherPlaceholder = "Client Company / Funding Agency / PhD Scholar";
+        dateLabel = "Start Date / Award Date";
+        refLabel = "Grant Amount / Project ID / Reg No.";
+        refPlaceholder = "e.g., Rs. 50,000 / Project Code No.";
+      }
+
+      const fieldsHTML = `
+        <div class="col-md-6">
+          <label class="form-label fw-semibold">${titleLabel} <span class="text-danger">*</span></label>
+          <input type="text" name="Title" id="dynTitle" class="form-control" placeholder="${titlePlaceholder}" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label fw-semibold">${publisherLabel} <span class="text-danger">*</span></label>
+          <input type="text" name="Publisher" id="dynPublisher" class="form-control" placeholder="${publisherPlaceholder}" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label fw-semibold">${dateLabel} <span class="text-danger">*</span></label>
+          <input type="date" name="Date" id="dynDate" class="form-control" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label fw-semibold">${refLabel}</label>
+          <input type="text" name="RefID" id="dynRefId" class="form-control" placeholder="${refPlaceholder}">
+        </div>
+        <div class="col-md-12">
+          <label class="form-label fw-semibold">Brief Summary / Remarks / Key Highlights</label>
+          <textarea name="Summary" id="dynSummary" class="form-control" rows="3" placeholder="Provide key highlights, impact, or summary details..."></textarea>
+        </div>
+      `;
+
+      container.innerHTML = fieldsHTML;
+    }
+
+    // Submit handler
+    document.getElementById('accomplishmentForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const btn = document.getElementById('submitBtn');
+      const alertBox = document.getElementById('responseAlert');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Submitting & Uploading File...';
+
+      const fileInput = document.getElementById('documentProof');
+      let fileData = null;
+      let fileName = "";
+      let fileType = "";
+
+      if (fileInput.files.length > 0) {
+        const file = fileInput.files[0];
+        fileName = file.name;
+        fileType = file.type;
+        fileData = await new Promise((resolve) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(reader.result.split(',')[1]);
+          reader.readAsDataURL(file);
+        });
+      }
+
+      const payload = {
+        facultyName: document.getElementById('facultyName').value,
+        facultyEmail: document.getElementById('facultyEmail').value,
+        department: document.getElementById('department').value,
+        tenurePhase: document.getElementById('tenurePhase').value,
+        criteriaCategory: document.getElementById('criteriaCategory').value,
+        title: document.getElementById('dynTitle') ? document.getElementById('dynTitle').value : '',
+        publisher: document.getElementById('dynPublisher') ? document.getElementById('dynPublisher').value : '',
+        date: document.getElementById('dynDate') ? document.getElementById('dynDate').value : '',
+        refId: document.getElementById('dynRefId') ? document.getElementById('dynRefId').value : '',
+        summary: document.getElementById('dynSummary') ? document.getElementById('dynSummary').value : '',
+        fileName: fileName,
+        fileType: fileType,
+        fileData: fileData
+      };
+
+      fetch(SCRIPT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(payload)
+      })
+      .then(res => res.json())
+      .then(response => {
+        if (response.result === "success") {
+          alertBox.className = "alert alert-success";
+          alertBox.textContent = "Accomplishment and PDF proof successfully submitted to Google Sheet!";
+          alertBox.classList.remove('d-none');
+          document.getElementById('accomplishmentForm').reset();
+          updateCategories();
+        } else {
+          throw new Error(response.error || "Form submission error");
+        }
+      })
+      .catch(err => {
+        alertBox.className = "alert alert-danger";
+        alertBox.textContent = "Error submitting form: " + err.message;
+        alertBox.classList.remove('d-none');
+      })
+      .finally(() => {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-paper-plane me-2"></i> Submit Accomplishment Details';
+      });
+    });
+
+    window.onload = () => {
+      updateCategories();
+    };
+  </script>
+</body>
+</html>
